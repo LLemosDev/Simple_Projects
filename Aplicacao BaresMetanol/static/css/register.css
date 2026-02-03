@@ -1,0 +1,100 @@
+/* reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* body */
+body {
+    background: linear-gradient(135deg, #2985f0, #75c7fd);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* seção central */
+section {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* título */
+section h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+/* formulário */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* inputs e checkbox */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus {
+    border-color: #ff6f61;
+    outline: none;
+}
+
+/* checkbox */
+input[type="checkbox"] {
+    margin-bottom: 20px;
+    width: auto;
+    transform: scale(1.2);
+}
+
+/* botão */
+button {
+    padding: 12px;
+    background-color: #0095c2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #033d58;
+}
+
+/* placeholder */
+::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+/* responsividade */
+@media (max-width: 480px) {
+    section {
+        padding: 30px 20px;
+    }
+    section h1 {
+        font-size: 1.5rem;
+    }
+}

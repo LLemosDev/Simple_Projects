@@ -1,0 +1,10 @@
+pip install flask
+pip install cryptography
+pip install sqlalchemy
+pip install pymysql
+
+Se tiver usando Linux crie e ative o venv:
+python3 -m venv nome_do_ambiente
+source nome_do_ambiente/bin/activate
+
+

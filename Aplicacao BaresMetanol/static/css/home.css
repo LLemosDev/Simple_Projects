@@ -1,0 +1,94 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Corpo */
+body {
+    background-color: #f8f9fb;
+    color: #333;
+    padding: 20px;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+header h1 {
+    font-size: 1.6rem;
+    color: #222;
+}
+
+header a {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+header a:hover {
+    background-color: #0056b3;
+}
+
+/* Conteúdo principal */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Cada bar */
+.bar-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border-left: 5px solid #007bff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bar-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+.bar-info h2 {
+    color: #007bff;
+    margin-bottom: 8px;
+}
+
+.bar-info p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+}
+
+/* Status */
+.aberto {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.fechado {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* Mensagem de vazio */
+.sem-bares {
+    text-align: center;
+    color: #777;
+    margin-top: 40px;
+    font-size: 1rem;
+}

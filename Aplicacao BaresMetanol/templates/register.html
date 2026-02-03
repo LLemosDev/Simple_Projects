@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Bar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/register.css') }}">
+</head>
+<body>
+    <section>
+        <h1>Cadastre um Bar/Adega</h1>
+        <form action="/register" method="POST">
+            <input type="text" name="nome" placeholder="Nome do Bar" required>
+            <input type="email" name="email" placeholder="email" required>
+            <input type="tel" name="telefone" placeholder="Telefone" required>
+            <input type="text" name="endereco" placeholder="endereco" required>
+            <input type="number" name="estrelas" placeholder="Quantidade de estrelas" min="0" step="1" required>
+            <label>
+                <input type="checkbox" name="status" value="1" >
+                Aberto
+            </label>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
+</body>
+</html>

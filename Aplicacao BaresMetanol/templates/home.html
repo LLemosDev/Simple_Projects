@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"
+</head>
+<body>
+    <header>
+        <h1>Bares e Adegas Cadastrados</h1>
+        <a href="{{ url_for('register.register') }}">+ Cadastrar Novo</a>
+    </header>
+
+    <main>
+        {% if bares %}
+            {% for bar in bares %}
+                <div class="bar-item">
+                    <div class="bar-info">
+                        <h2>{{ bar["nome"] }}</h2>
+                        <p><strong>Email:</strong> {{ bar["email"] }}</p>
+                        <p><strong>Telefone:</strong> {{ bar["telefone"] }}</p>
+                        <p><strong>Endereço:</strong> {{ bar["endereco"] }}</p>
+                        <p><strong>Status:</strong> 
+                            <span class="{{ 'aberto' if bar['aberto'] else 'fechado' }}">
+                                {{ 'Aberto' if bar['aberto'] else 'Fechado' }}
+                            </span>
+                        </p>
+                        <p><strong>Avaliação:</strong> {{ bar["estrelas"] }} ⭐</p>
+                        <p><strong>Reputação:</strong> {{ bar["mensagem"] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="sem-bares">Nenhum bar cadastrado ainda.</p>
+        {% endif %}
+    </main>
+</body>
+</html>
