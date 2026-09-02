@@ -15,8 +15,6 @@ const send_button = document.getElementById("send-btn")
 const message_section = document.querySelector(".messages")
 const input = document.getElementById('input')
 
-// Array define bg color, which will be choosed randomly
-const color_bg = ['red-bg', 'blue-bg', 'yellow-bg', 'green-bg', 'pink-bg', 'orange-bg', 'white-bg']
 
 // Event listener execute the follow function every time user click on send-btn
 send_button.addEventListener('click', (event) =>{
@@ -44,9 +42,7 @@ socket.on("receive_message", function(data){
 
     // Assign class
     message.classList.add("message")
-    // Get an random element of array
-    let class_name = color_bg[Math.floor(Math.random() * color_bg.length)]
-    message_avatar.classList.add("message-avatar", `${class_name}`)
+    message_avatar.classList.add("message-avatar", `${data.user_color}`)
     message_content.classList.add('message-content')
 
     // Show the data received

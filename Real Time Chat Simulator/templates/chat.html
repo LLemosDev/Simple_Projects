@@ -31,19 +31,19 @@
                         ROOMS
                     </span>
 
-                    <button class="room active">
+                    <button class="room active" value="general">
                         # General
                     </button>
 
-                    <button class="room">
+                    <button class="room" value="programming">
                         # Programming
                     </button>
 
-                    <button class="room">
+                    <button class="room" value="games">
                         # Games
                     </button>
 
-                    <button class="room">
+                    <button class="room" value="random">
                         # Random
                     </button>
 
@@ -155,10 +155,9 @@
 
         </div>
 
-
         <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
         <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
-        
+        <script src="{{ url_for('static', filename='js/room.js') }}"></script>
 
     </body>
 </html>
