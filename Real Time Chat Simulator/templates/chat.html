@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>RealTime Chat</title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+
+    </head>
+
+    <body class="chat-page">
+
+
+        <div class="chat-container">
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+
+                <div class="sidebar-header">
+                    <h2>💬 RealTime Chat</h2>
+                </div>
+
+
+                <div class="rooms">
+
+                    <span class="section-title">
+                        ROOMS
+                    </span>
+
+                    <button class="room active">
+                        # General
+                    </button>
+
+                    <button class="room">
+                        # Programming
+                    </button>
+
+                    <button class="room">
+                        # Games
+                    </button>
+
+                    <button class="room">
+                        # Random
+                    </button>
+
+                </div>
+
+
+                <div class="user-info">
+
+                    <span class="online-dot"></span>
+
+                    <span>
+                        {{ session["username"] }}
+                    </span>
+
+                </div>
+
+            </aside>
+
+
+            <!-- MAIN CHAT -->
+            <main class="chat">
+
+                <!-- CHAT HEADER -->
+
+                <header class="chat-header">
+
+                    <div>
+
+                        <h2 id="chat-name">
+                            # General
+                        </h2>
+
+                        <span id="online-users-chat">
+                            3 users online
+                        </span>
+
+                    </div>
+
+                </header>
+
+
+                <!-- MESSAGES -->
+
+                <section class="messages">
+
+                    <div class="system-message">
+                        Lucas joined the chat
+                    </div>
+
+                </section>
+
+
+                <!-- INPUT -->
+
+                <form class="message-form">
+
+                    <input
+                        type="text"
+                        placeholder="Type a message..."
+                        autocomplete="off"
+                        id="input"
+                    >
+
+                    <button id="send-btn" type="submit">
+                        Send
+                    </button>
+
+                </form>
+
+            </main>
+
+
+            <!-- USERS -->
+
+            <aside class="users-panel">
+
+                <h3>
+                    Online — 3
+                </h3>
+
+
+                <div class="online-user">
+
+                    <span class="online-dot"></span>
+
+                    Lucas
+
+                </div>
+
+
+                <div class="online-user">
+
+                    <span class="online-dot"></span>
+
+                    Maria
+
+                </div>
+
+
+                <div class="online-user">
+
+                    <span class="online-dot"></span>
+
+                    Pedro
+
+                </div>
+
+            </aside>
+
+        </div>
+
+
+        <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+        <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+        
+
+    </body>
+</html>

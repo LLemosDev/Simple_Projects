@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>RealTime Chat Simulator</title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+
+    </head>
+
+    <body class="login-page">
+
+        <main class="login-container">
+
+            <section class="login-card">
+
+                <div class="logo">
+                    💬
+                </div>
+
+                <h1>RealTime Chat</h1>
+
+                <p>
+                    Join the conversation and chat with people in real time.
+                </p>
+
+                <form action="{{ url_for('index') }}" method="POST">
+
+                    <label for="username">
+                        Type Your Username
+                    </label>
+                    <br>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required
+                        maxlength="20">
+
+                    <button type="submit">
+                        Join Chat
+                    </button>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </body>
+
+</html>
