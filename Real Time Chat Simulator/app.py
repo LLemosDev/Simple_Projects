@@ -15,6 +15,14 @@ socket = SocketIO(app)
 # List to manage bg color, profile avatar
 color_bg = ['red-bg', 'blue-bg', 'yellow-bg', 'green-bg', 'pink-bg', 'orange-bg', 'white-bg']
 
+# Dictonary to store messages while application is running
+messages = {
+    "general": [],
+    "programming": [],
+    "games": [],
+    "random": []
+}   
+
 # Basic home route
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -53,7 +61,12 @@ def handle_connection():
     # Join General room as standart
     join_room("general")
     session["room"] = "general"
-    print("User joined General")
+
+    socket.emit("system_message", {
+            "message": f'{session["username"]} joined the room'
+        }, to=session["room"],
+           include_self=False
+        )
 
 @socket.on("test_connection")
 def handle_test_connection(data):
@@ -66,6 +79,14 @@ def handle_test_connection(data):
 def handle_send_message(data):
     username = session["username"]
     color = session["color"]
+
+    # Save message
+    messages[session["room"]].append({
+        "username": session["username"],
+        "message": data["message"],
+        "user_color": session["color"]
+    })
+
     # Send an event
     socket.emit("receive_message", {
         "username": username,
@@ -76,6 +97,11 @@ def handle_send_message(data):
 
 @socket.on("change_room")
 def handle_change_room(data):
+
+    # verify if is a new room
+    if data["room"] == session["room"]:
+        return
+    
     # Leaving old Room
     leave_room(session["room"])
 
@@ -91,11 +117,23 @@ def handle_change_room(data):
     # Emite system message for users connected to the new room telling: User X joined room
     socket.emit("system_message", {
         "message": f'{session["username"]} joined the room'
-    }, to=session["room"])
+    }, to=session["room"],
+       include_self=False
+    )
 
     socket.emit("room_changed", {
         "room": session["room"]
-    })
+    }, to=session["room"])
+
+    history_messages = messages[data["room"]]
+
+    # Each WS has an unique ID that is called : sid
+    # We want to load the history only for the user that just joined the room
+    # If use only to=current_room, everyone connected in the room would receive the history
+    # With request.sid, only the sender receives the history
+    socket.emit("load_history", {
+        "history":  history_messages
+    }, to=request.sid)
 
 if __name__ == '__main__':
     socket.run(app, debug=True)

@@ -36,9 +36,9 @@ send_button.addEventListener('click', (event) =>{
 socket.on("receive_message", function(data){
 
     // Creating elemeents
-    const message = document.createElement('div')
-    const message_avatar = document.createElement('div')
-    const message_content = document.createElement('div')
+    let message = document.createElement('div')
+    let message_avatar = document.createElement('div')
+    let message_content = document.createElement('div')
 
     // Assign class
     message.classList.add("message")
